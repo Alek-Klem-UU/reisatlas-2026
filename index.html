@@ -78,6 +78,10 @@
     }
     openGuide(plain);
   }
-  restore();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', restore, {once:true});
+  } else {
+    restore();
+  }
 })();
 </script></body></html>
