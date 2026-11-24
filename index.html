@@ -13,6 +13,5 @@ const key=await crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt:bytes
 plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:bytes('wKmx0dCD2h/EL2bp')},key,bytes(document.getElementById('cipher').textContent.trim()));
 }catch{status.textContent='De toegangscode is onjuist. Probeer het opnieuw.';go.disabled=false;go.textContent='Reisgids openen';input.focus();return}
 input.value='';const html=new TextDecoder().decode(plain);document.open();document.write(html);document.close();
-const foot=document.querySelector('footer');if(foot){const lock=document.createElement('button');lock.type='button';lock.textContent='Gids vergrendelen';lock.style.cssText='display:block;width:100%;min-height:46px;padding:10px 18px;border:0;border-top:1px solid #52536b;background:#191b32;color:#fff8e9;font-weight:700;cursor:pointer';lock.onclick=()=>location.reload();foot.append(lock);}
 };})();
 </script></body></html>
